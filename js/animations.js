@@ -3,6 +3,10 @@ $(document).ready(function(){
 $('#tweet-submit').hide();
 $('#char-count').hide();
 
+function appendTweet(tweet) {
+  
+}
+
 $(document).on('click','.tweet-compose',function (e) {
   e.preventDefault();
   $('.tweet-compose').css("height",'5em');
@@ -24,7 +28,10 @@ $(document).on('keyup','.tweet-compose', function () {
     $('#tweet-submit').prop('disabled', false);
   }
 
-  
+  $('tweet-submit').on('click',function(){
+
+  })
+
 
 })
 
