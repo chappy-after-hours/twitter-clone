@@ -60,6 +60,7 @@ $(document).on('click', '#tweet-submit', function(e) {
 
   appendTweet(tweet);
 
+  
   $('.tweet-compose').val('');
   $('.tweet-compose').css("height",'2.5em');
   $('#tweet-submit').hide();
@@ -87,12 +88,18 @@ $(document).on('keyup','.tweet-compose', function () {
     $('#tweet-submit').prop('disabled', false);
   }
 
-  $('.tweet').hover(function() {
-    $('.tweet-actions').show();
-  }, function() {
-    $('.tweet-actions').hide();
-  })
-
 })
+
+// $('.tweet-actions').hover(function() {
+//   $(this).show();
+// }, function() {
+//   $(this).hide();
+// })
+
+$(".tweet").hover(function(){
+    $('.tweet-actions', this).show();
+    }, function(){
+    $('.tweet-actions', this).hide();
+});
 
 })
