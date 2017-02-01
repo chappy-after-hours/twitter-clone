@@ -3,6 +3,36 @@ $(document).ready(function(){
 $('#tweet-submit').hide();
 $('#char-count').hide();
 $('.tweet-actions').hide();
+$('.stats').hide();
+
+// $('.tweet').on('click', function() {
+//   $('.stats',this).toggle('slow');
+// });
+//
+// $(".tweet").hover(function(){
+//     $('.tweet-actions', this).show();
+//     }, function(){
+//     $('.tweet-actions', this).hide();
+// });
+
+var statTog = function() {
+  $('.tweet').off('click');
+  $('.tweet').on('click', function() {
+    $('.stats',this).toggle('slow');
+  });
+}
+statTog();
+
+var tweetActHover = function() {
+  $('.tweet').off('hover');
+  $(".tweet").hover(function(){
+      $('.tweet-actions', this).show();
+      }, function(){
+      $('.tweet-actions', this).hide();
+  });
+}
+tweetActHover();
+
 
 function appendTweet(tweet) {
 
@@ -10,7 +40,7 @@ function appendTweet(tweet) {
 
     '<div class="tweet">' +
       '<div class="content">' +
-        '<img class="avatar" src="img/alagoon.jpg">'+
+        '<img class="avatar" src="img/chapman.jpg">'+
         '<strong class="fullname">Jeff Chapman</strong>'+
         '<span class="username">@jeffcchapman</span>'+
         '<p class="tweet-text">'+ tweet + '</p>'+
@@ -22,37 +52,38 @@ function appendTweet(tweet) {
             '<li><span class="icon action-more"></span> More</li>'+
           '</ul>'+
         '</div>'+
-        // '<div class="stats">'+
-        //   '<div class="retweets">'+
-        //     '<p class="num-retweets">30</p>'+
-        //     '<p>RETWEETS</p>'+
-        //   '</div>'+
-        //   '<div class="favorites">'+
-        //     '<p class="num-favorites">6</p>'+
-        //     '<p>FAVORITES</p>'+
-        //   '</div>'+
-        //   '<div class="users-interact">'+
-        //     '<div>'+
-        //       '<img src="img/jennyshen.jpg" />'+
-        //       '<img src="img/damenleeturks.jpg" />'+
-        //     '</div>'+
-        //   '</div>'+
-        //   '<div class="time">'+
-        //     '1:04 PM - 19 Sep 13'+
-        //   '</div>'+
-        // '</div>'+
+        '<div class="stats">'+
+          '<div class="retweets">'+
+            '<p class="num-retweets">30</p>'+
+            '<p>RETWEETS</p>'+
+          '</div>'+
+          '<div class="favorites">'+
+            '<p class="num-favorites">6</p>'+
+            '<p>FAVORITES</p>'+
+          '</div>'+
+          '<div class="users-interact">'+
+            '<div>'+
+              '<img src="img/jennyshen.jpg" />'+
+              '<img src="img/damenleeturks.jpg" />'+
+            '</div>'+
+          '</div>'+
+          '<div class="time">'+
+            '1:04 PM - 19 Sep 13'+
+          '</div>'+
+        '</div>'+
         // '<div class="reply">'+
-        //   '<img class="avatar" src="img/alagoon.jpg" />'+
+        //   '<img class="avatar" src="img/chapman.jpg" />'+
         //   '<textarea class="tweet-compose" placeholder="Reply to @theonion"/></textarea>'+
         // '</div>'+
       '</div>'+
     '</div>'
-
-
-
   );
-
+  $('.tweet-actions').hide();
+  $('.stats').hide();
+  tweetActHover();
+  statTog();
 }
+
 
 $(document).on('click', '#tweet-submit', function(e) {
   e.preventDefault();
@@ -60,7 +91,7 @@ $(document).on('click', '#tweet-submit', function(e) {
 
   appendTweet(tweet);
 
-  
+
   $('.tweet-compose').val('');
   $('.tweet-compose').css("height",'2.5em');
   $('#tweet-submit').hide();
@@ -96,10 +127,5 @@ $(document).on('keyup','.tweet-compose', function () {
 //   $(this).hide();
 // })
 
-$(".tweet").hover(function(){
-    $('.tweet-actions', this).show();
-    }, function(){
-    $('.tweet-actions', this).hide();
-});
 
 })
